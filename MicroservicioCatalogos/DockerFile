@@ -9,10 +9,11 @@ RUN dotnet restore
 # Copia el resto de los archivos de la aplicación
 COPY . ./
 
-# Agrega la carpeta que contiene la referencia ensamblada
-COPY References ./References
+# Copia los archivos del proyecto DB
+COPY ../DB/*.csproj ./DB/
+RUN dotnet restore ./DB/*.csproj
 
-# Compila la aplicación, incluyendo la referencia ensamblada
+# Compila la aplicación, incluyendo el proyecto DB
 RUN dotnet publish -c Release -o out --no-restore
 
 # Utiliza la imagen base de .NET Core para ejecutar la aplicación
