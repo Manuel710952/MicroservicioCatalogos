@@ -10,8 +10,8 @@ RUN dotnet restore
 COPY . ./
 
 # Copia los archivos del proyecto DB
-COPY ../DB/*.csproj ./DB/
-RUN dotnet restore ./DB/*.csproj
+COPY ../DB/*.csproj ../DB/
+RUN dotnet restore ../DB/*.csproj
 
 # Compila la aplicación, incluyendo el proyecto DB
 RUN dotnet publish -c Release -o out --no-restore
@@ -22,7 +22,7 @@ WORKDIR /app
 COPY --from=build-env /app/out .
 
 # Copia el archivo appsettings.json
-COPY /MicroservicioCatalogos/appsettings.json .
+COPY appsettings.json .
 
 # Expone el puerto en el que se ejecutará la aplicación
 EXPOSE 8085
