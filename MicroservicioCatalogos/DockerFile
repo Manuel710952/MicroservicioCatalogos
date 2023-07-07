@@ -3,12 +3,12 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build-env
 WORKDIR /app
 
 # Copia los archivos de proyecto DB y restaura las dependencias
-COPY DB/DB.csproj ./DB/
+COPY ../DB/DB.csproj ./DB/
 RUN dotnet restore ./DB/DB.csproj
 
 # Copia los archivos de proyecto MicroservicioCatalogos y restaura las dependencias
-COPY *.csproj ./
-RUN dotnet restore
+COPY MicroservicioCatalogos.csproj ./
+RUN dotnet restore MicroservicioCatalogos.csproj
 
 # Copia el resto de los archivos de la aplicación
 COPY . ./
