@@ -1,4 +1,5 @@
 ﻿using DB;
+using DBOld;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MicroservicioCatalogos.Controllers
@@ -33,7 +34,17 @@ namespace MicroservicioCatalogos.Controllers
 
             return Ok(dato);
         }
+        [HttpGet("dbpj")]
+        [Produces("application/json")]
+        public IActionResult GetAlldbpj()
+        {
+            
+            var dato = new DBOld.Models.DBPJ.DbpjContext();
+            var catalogo = (from cat in dato._001areas
+                            select cat).ToList();
 
+            return Ok(catalogo);
+        }
 
         [HttpPost]
         [Consumes("application/json")]
