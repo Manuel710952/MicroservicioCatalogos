@@ -6,8 +6,9 @@ WORKDIR /app
 
 EXPOSE 8080
 
-COPY *.csproj .
-RUN dotnet restore
+COPY *.sln .
+RUN dotnet restore ./MicroservicioCatalogos
+RUN dotnet restore ./MicroservicioCatalogos/MicroservicioCatalogos.csproj
 
 
 COPY . .
