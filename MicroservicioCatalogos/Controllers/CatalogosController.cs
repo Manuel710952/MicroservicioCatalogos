@@ -38,10 +38,10 @@ namespace MicroservicioCatalogos.Controllers
         [Produces("application/json")]
         public IActionResult GetAlldbpj()
         {
-            
-            var dato = new DBOld.Models.DBPJ.DbpjContext();
+
+            var dato = new DBOld.Models.DBPJ2.DbpjContext();
             var catalogo = (from cat in dato._001areas
-                            select cat).ToList();
+                            select new { cat._001areaIdMajat }).ToList();
 
             return Ok(catalogo);
         }

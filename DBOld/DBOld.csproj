@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\DBPJ\" />
+    <Folder Include="Models\DBPJ2\" />
   </ItemGroup>
 
 </Project>
